@@ -1,7 +1,16 @@
-[project]
-name = "python-template"
+[tool.poetry]
+name = "biofetcher"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
-requires-python = ">=3.11"
-dependencies = []
+description = "AI Bio Fetcher"
+authors = ["Tufel Shaikh <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^2.3"
+requests = "^2.28"
+openai = "^1.75.0"
+flask-cors = "^5.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
