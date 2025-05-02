@@ -17,17 +17,38 @@ def get_biography():
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAavza2qWGY484PblZOyXoUn3Kmy-isAHE"
     headers = {"Content-Type": "application/json"}
     body = {
-        "contents": [
-            {
-                "parts": [
-                    {
-                        "text": f"Write a short, clear, 100-150 word biography of {name} including key facts, background, and major achievements."
-                    }
-                ]
-            }
-        ]
-    }
+    "contents": [
+        {
+            "parts": [
+                {
+                    "text": f"""
+You are a biography expert. Write a full-length biography of {name} in the "Ranked Biography" format used by Paradum.
 
+The format should include the following sections, well-structured, easy-to-read, and detailed:
+
+1. SEO Optimized Title  
+2. Meta Description  
+3. Summary Paragraph  
+4. Personal Details (Full Name, Nickname, Date of Birth, Age, Birthplace, Hometown, Nationality, Religion, Profession)  
+5. Physical Stats (Height, Weight, Eye Color, Hair Color, Skin Tone, Tattoos)  
+6. Education (School, College/University, Qualification)  
+7. Family and Relationships (Father, Mother, Siblings, Relationship Status, Spouse, Children)  
+8. Favorites (Food, Actor, Actress, Color, Place, Hobbies, Inspiration)  
+9. Social Media Handles (Instagram, YouTube, Twitter, Facebook – link format)  
+10. Net Worth (Approx in INR and USD)  
+11. Career Journey  
+12. Lesser Known Facts  
+13. Conclusion (inspiring ending line)  
+
+Use proper formatting, headers, and line breaks. Keep the tone informative, clear, and friendly. No fake info – only provide what's publicly known or likely to be true. Avoid placeholder values like 'N/A' or 'Unknown'.
+
+Do not add tags or keywords at the end.
+"""
+                }
+            ]
+        }
+    ]
+    }
     response = requests.post(url, headers=headers, json=body)
     data = response.json()
 
